@@ -22,7 +22,6 @@ using namespace nestdaq::unpacker;
 void
 LeafProcessor::build_time_aligned_block( std::vector<std::tuple<DecodedHeaderData, DataPtr, DataPtr>> leafs)
 {
-  std::cout << "in build_time " << leafs.size() << std::endl;
   for( auto [header_data, body_first, body_last] : leafs ) {
     set_leaf_node( header_data, body_first, body_last );
   }
@@ -179,7 +178,6 @@ LeafProcessor::decode_node_body()
     std::vector<LeafDataSet> data_set;
     auto body_end = body_last +1;
     for( auto ptr = body_first; ptr != body_end; ++ptr ) {
-      show_decoded_feedata( decode_fee_word( ptr, schema_page ) );
       auto [type_name, data] = decode_fee_word( ptr, schema_page );
       if( !( type_name == "HBD-1" || type_name == "HBD-2" ) ) {
         data_set.push_back( { type_name, data } );

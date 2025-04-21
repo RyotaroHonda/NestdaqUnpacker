@@ -40,7 +40,7 @@ nestdaq::unpacker::show_header( const HeaderDef& def, const DecodedHeaderData& d
 }
 
 void
-nestdaq::unpacker::show_header_oneline( const DecodedHeaderData& data )
+nestdaq::unpacker::show_header_oneline( const HeaderDef& def, const DecodedHeaderData& data )
 {
   auto type    = ( data.find( "Type" ) )->second;
   auto length  = ( data.find( "Length" ) )->second;

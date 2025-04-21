@@ -166,7 +166,6 @@ NodeUnpacker::unpack()
   for( DataPtr ptr = body_first_; ptr != ( block_last_+1 ); ) {
     if( flag_[PageFlag::kIsLeaf] ) {
       // It's expected that FEE data exist in this payload //
-      std::cout << "I'm leaf" << flag_[PageFlag::kIsBuilt] << std::endl;
       auto parent = this->get_parent();
       if( !parent ) {
         std::cout << "#E: " << func_name << "std::shared_ptr manged object, (parent), deleted." << std::endl;

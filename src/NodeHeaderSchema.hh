@@ -39,7 +39,20 @@ namespace nestdaq {
       {
         0x004b4e53454c4946,
         {
-          {"FileSink-v1"}, {0},
+          {"FileSinkHeader-v1"}, {0},
+          { {{"Version",         56, 0xff}, {"Magic", 0, 0xff'ffff'ffff'ffff}},
+            {{"Type",            48, 0xffff}, {"hLength", 32, 0xffff}, {"Length", 0, 0xffff'ffff}},
+            {{"Device Type",     0,  0xffff'ffff'ffff'ffff}},
+            {{"Rnu number",      0,  0xffff'ffff'ffff'ffff}},
+            {{"Start UNIX time", 0,  0xffff'ffff'ffff'ffff}},
+            {{"Stop UNIX time",  0,  0xffff'ffff'ffff'ffff}}
+          }
+        }
+      },
+      {
+        0x004c5254454c4946,
+        {
+          {"FileSinkTrailer-v1"}, {0},
           { {{"Version",         56, 0xff}, {"Magic", 0, 0xff'ffff'ffff'ffff}},
             {{"Type",            48, 0xffff}, {"hLength", 32, 0xffff}, {"Length", 0, 0xffff'ffff}},
             {{"Device Type",     0,  0xffff'ffff'ffff'ffff}},

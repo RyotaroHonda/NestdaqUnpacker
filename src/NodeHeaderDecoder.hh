@@ -12,7 +12,7 @@ namespace nestdaq::unpacker {
 
   void decode_header( const HeaderDef& header_def, const uint64_t* buffer, DecodedHeaderData& hdata );
   void show_header( const HeaderDef& def, const DecodedHeaderData& data );
-  void show_header_oneline( const DecodedHeaderData& data );
+  void show_header_oneline( const HeaderDef& def, const DecodedHeaderData& data );
 
 };// namespace nestdaq::unpacker
 
