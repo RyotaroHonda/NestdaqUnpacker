@@ -62,6 +62,7 @@ void
 LeafProcessor::clear_node_block()
 {
   time_aligned_block_.clear();
+  frame_index_ = 0;
 }
 
 // _______________________________________________________________________
@@ -103,6 +104,11 @@ LeafProcessor::decode_heartbeat_delimiter()
 
     if( check_hbd_type( data_set, fem_address, body_last ) ) {
       // Heartbeat frame is broken //
+      std::cout << std::hex << header_data["Magic"] << std::endl;
+      std::cout << std::dec << header_data["Length"] << std::endl;
+      std::for_each( body_first, body_last+1, [] ( auto val ) {std::cout << std::hex << "0x" << val << std::endl;} );
+      std::cout << std::endl;
+
       critical_fem.push_back( fem_address );
       is_invalid_frame = true;
       continue;
