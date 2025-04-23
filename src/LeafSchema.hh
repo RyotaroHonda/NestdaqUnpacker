@@ -110,7 +110,7 @@ namespace nestdaq {
   };
 
   using LeafSchemaPage    = std::tuple<std::string, LeafDecodeDef, LeafDef>;
-  using LeafSchema        = std::map<uint32_t, LeafSchemaPage>;
+  using LeafSchema        = std::unordered_map<uint32_t, LeafSchemaPage>;
 
   static const LeafSchema g_leaf_schema =
       {
