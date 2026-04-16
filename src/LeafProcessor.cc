@@ -123,10 +123,16 @@ LeafProcessor::decode_heartbeat_delimiter()
     auto& [type_name2, data2] = data_set.at( 1 );
 
     // hbd flags //
-    if( data1["Flags"] == 0 ) {
+//    if( data1["Flags"] == 0 ) {
+    auto decoded_flag = nestdaq::unpacker::decode_hbdflag( data1["Flags"] );
+    auto is_throttling = decoded_flag["HB frame throttling"]     |
+                         decoded_flag["Output throttling"]       |
+                         decoded_flag["Input throttling type-2"] |
+                         decoded_flag["Input throttling type-1"];
+    if( is_throttling == 0 ) {
       hbd_summary_page.n_clean_hbframe++;
     } else {
-      auto decoded_flag = nestdaq::unpacker::decode_hbdflag( data1["Flags"] );
+//      auto decoded_flag = nestdaq::unpacker::decode_hbdflag( data1["Flags"] );
       if( decoded_flag["Output throttling"] )       hbd_summary_page.n_out_thrott++;
       if( decoded_flag["Input throttling type-2"] ) hbd_summary_page.n_in_thrott_t2++;
       is_invalid_frame = true;
